@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-//Package b2n provides functions for parsing byte arrays and conveting to uint8, uint16, uint32 also provides tooling to converting to uint8
+//Package b2n provides functions for parsing byte arrays and conversion into another data types
+//home page https://github.com/filipkroca/b2n
 package b2n
 
 import (
