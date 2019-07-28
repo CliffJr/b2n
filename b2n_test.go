@@ -166,3 +166,10 @@ func BenchmarkValidateIMEI(b *testing.B) {
 		ValidateIMEI(&imei)
 	}
 }
+
+func BenchmarkParseBs2Uint8(b *testing.B) {
+	bs := []byte{0xAB, 0xFF, 0x12}
+	for i := 0; i < b.N; i++ {
+		ParseBs2Uint8(&bs, 1)
+	}
+}

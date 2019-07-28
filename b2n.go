@@ -10,13 +10,13 @@ import (
 	"strconv"
 )
 
-//ParseBs2Uint8 takes a byte slice pointer, start byte and returns Uint8 parsed as it was HEX number
+//ParseBs2Uint8 a pointer to byte slice, start byte and returns parsed Uint8
 func ParseBs2Uint8(bs *[]byte, start int32) uint8 {
 	//convert hex byte to Uint8
 	return uint8((*bs)[start])
 }
 
-//ParseBs2Uint16 takes a byte slice pointer, start byte and returns Uint16 parsed as it was HEX number
+//ParseBs2Uint16 a pointer to byte slice, start byte and returns parsed int16
 func ParseBs2Uint16(bs *[]byte, start int32) uint16 {
 	var sum uint16
 	var order uint32
@@ -29,7 +29,7 @@ func ParseBs2Uint16(bs *[]byte, start int32) uint16 {
 	return sum
 }
 
-//ParseBs2Uint32 takes a byte slice pointer, start byte and returns Uint32 parsed as it was HEX number
+//ParseBs2Uint32 a pointer to byte slice, start byte and returns parsed int32
 func ParseBs2Uint32(bs *[]byte, start int32) uint32 {
 	var sum uint32
 	var order uint32
@@ -42,7 +42,7 @@ func ParseBs2Uint32(bs *[]byte, start int32) uint32 {
 	return sum
 }
 
-//ParseBs2Uint64 takes a byte slice pointer, start byte, stop byte and returns Uint64 parsed as it was HEX number
+//ParseBs2Uint64 a pointer to byte slice, start byte, stop byte and returns parsed int64
 func ParseBs2Uint64(bs *[]byte, start int32) uint64 {
 	var sum uint64
 	var order uint32
@@ -55,7 +55,7 @@ func ParseBs2Uint64(bs *[]byte, start int32) uint64 {
 	return sum
 }
 
-//ParseBs2Int8TwoComplement takes a byte slice pointer, start byte and returns Int8 parsed as it was HEX number coded with Two Complement Arithmetic
+//ParseBs2Int8TwoComplement a pointer to byte slice, start byte and returnsparsed  Int8 coded with Two Complement Arithmetic
 func ParseBs2Int8TwoComplement(bs *[]byte, start int32) int8 {
 	var sum int8
 	var signed bool
@@ -78,7 +78,7 @@ func ParseBs2Int8TwoComplement(bs *[]byte, start int32) int8 {
 	return sum
 }
 
-//ParseBs2Int16TwoComplement takes a byte slice pointer, start byte and returns Int16 parsed as it was HEX number coded with Two Complement Arithmetic
+//ParseBs2Int16TwoComplement a pointer to byte slice, start byte and returns parsed Int16 coded with Two Complement Arithmetic
 func ParseBs2Int16TwoComplement(bs *[]byte, start int32) int16 {
 	var sum int16
 	var order uint16
@@ -106,7 +106,7 @@ func ParseBs2Int16TwoComplement(bs *[]byte, start int32) int16 {
 	return sum
 }
 
-//ParseBs2Int32TwoComplement takes a byte slice pointer, start byte and returns Int32 parsed as it was HEX number coded with Two Complement Arithmetic
+//ParseBs2Int32TwoComplement a pointer to byte slice, start byte and returns parsed Int32 coded with Two Complement Arithmetic
 func ParseBs2Int32TwoComplement(bs *[]byte, start int32) int32 {
 	var sum int32
 	var order uint32
@@ -134,7 +134,7 @@ func ParseBs2Int32TwoComplement(bs *[]byte, start int32) int32 {
 	return sum
 }
 
-//ParseBs2Int64TwoComplement takes a byte slice pointer, start byte and returns Int64 parsed as it was HEX number coded with Two Complement Arithmetic
+//ParseBs2Int64TwoComplement a pointer to byte slice, start byte and returns parsed Int64 coded with Two Complement Arithmetic
 func ParseBs2Int64TwoComplement(bs *[]byte, start int32) int64 {
 	var sum int64
 	var order uint32
