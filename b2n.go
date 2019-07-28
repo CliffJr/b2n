@@ -10,18 +10,18 @@ import (
 	"strconv"
 )
 
-//ParseBs2Uint8 a pointer to a byte slice, start byte and returns parsed Uint8
-func ParseBs2Uint8(bs *[]byte, start int32) uint8 {
+//ParseBs2Uint8 a pointer to a byte slice, offset and returns parsed Uint8
+func ParseBs2Uint8(bs *[]byte, offset int32) uint8 {
 	//convert hex byte to Uint8
-	return uint8((*bs)[start])
+	return uint8((*bs)[offset])
 }
 
-//ParseBs2Uint16 a pointer to a byte slice, start byte and returns parsed int16
-func ParseBs2Uint16(bs *[]byte, start int32) uint16 {
+//ParseBs2Uint16 a pointer to a byte slice, offset and returns parsed int16
+func ParseBs2Uint16(bs *[]byte, offset int32) uint16 {
 	var sum uint16
 	var order uint32
 	//convert hex byte slice to Uint64
-	for i := start + 1; i >= start; i-- {
+	for i := offset + 1; i >= offset; i-- {
 		//shift to the left by 8 bits every cycle
 		sum += uint16((*bs)[i]) << order
 		order += 8
@@ -29,12 +29,12 @@ func ParseBs2Uint16(bs *[]byte, start int32) uint16 {
 	return sum
 }
 
-//ParseBs2Uint32 a pointer to a byte slice, start byte and returns parsed int32
-func ParseBs2Uint32(bs *[]byte, start int32) uint32 {
+//ParseBs2Uint32 a pointer to a byte slice, offset and returns parsed int32
+func ParseBs2Uint32(bs *[]byte, offset int32) uint32 {
 	var sum uint32
 	var order uint32
 	//convert hex byte slice to Uint64
-	for i := start + 3; i >= start; i-- {
+	for i := offset + 3; i >= offset; i-- {
 		//shift to the left by 8 bits every cycle
 		sum += uint32((*bs)[i]) << order
 		order += 8
@@ -42,12 +42,12 @@ func ParseBs2Uint32(bs *[]byte, start int32) uint32 {
 	return sum
 }
 
-//ParseBs2Uint64 a pointer to a byte slice, start byte, stop byte and returns parsed int64
-func ParseBs2Uint64(bs *[]byte, start int32) uint64 {
+//ParseBs2Uint64 a pointer to a byte slice, offset, stop byte and returns parsed int64
+func ParseBs2Uint64(bs *[]byte, offset int32) uint64 {
 	var sum uint64
 	var order uint32
 	//convert hex byte slice to Uint64
-	for i := start + 7; i >= start; i-- {
+	for i := offset + 7; i >= offset; i-- {
 		//shift to the left by 8 bits every cycle
 		sum += uint64((*bs)[i]) << order
 		order += 8
@@ -55,16 +55,16 @@ func ParseBs2Uint64(bs *[]byte, start int32) uint64 {
 	return sum
 }
 
-//ParseBs2Int8TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int8
-func ParseBs2Int8TwoComplement(bs *[]byte, start int32) int8 {
+//ParseBs2Int8TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, offset and returns parsed signed Int8
+func ParseBs2Int8TwoComplement(bs *[]byte, offset int32) int8 {
 	var sum int8
 	var signed bool
 	//mask last Byte with mask (1000 0000) then shift by 7 bits and check sign bit
-	if (*bs)[start]&0x80>>7 == 1 {
+	if (*bs)[offset]&0x80>>7 == 1 {
 		signed = true
 	}
 	//convert hex byte slice to int8
-	cb := (*bs)[start]
+	cb := (*bs)[offset]
 	//if signed do a XOR operation on every single Byte
 	if signed {
 		cb ^= 0xFF
@@ -78,17 +78,17 @@ func ParseBs2Int8TwoComplement(bs *[]byte, start int32) int8 {
 	return sum
 }
 
-//ParseBs2Int16TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int16 coded with Two Complement Arithmetic
-func ParseBs2Int16TwoComplement(bs *[]byte, start int32) int16 {
+//ParseBs2Int16TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, offset and returns parsed signed Int16 coded with Two Complement Arithmetic
+func ParseBs2Int16TwoComplement(bs *[]byte, offset int32) int16 {
 	var sum int16
 	var order uint16
 	var signed bool
 	//mask last Byte with mask (1000 0000) then shift by 7 bits and check sign bit
-	if (*bs)[start]&0x80>>7 == 1 {
+	if (*bs)[offset]&0x80>>7 == 1 {
 		signed = true
 	}
 	//convert hex byte slice to int16
-	for i := start + 1; i >= start; i-- {
+	for i := offset + 1; i >= offset; i-- {
 		cb := (*bs)[i]
 		//if signed do a XOR operation on every single Byte
 		if signed {
@@ -106,17 +106,17 @@ func ParseBs2Int16TwoComplement(bs *[]byte, start int32) int16 {
 	return sum
 }
 
-//ParseBs2Int32TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int32 coded with Two Complement Arithmetic
-func ParseBs2Int32TwoComplement(bs *[]byte, start int32) int32 {
+//ParseBs2Int32TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, offset and returns parsed signed Int32 coded with Two Complement Arithmetic
+func ParseBs2Int32TwoComplement(bs *[]byte, offset int32) int32 {
 	var sum int32
 	var order uint32
 	var signed bool
 	//mask last Byte with mask (1000 0000) then shift by 7 bits and check sign bit
-	if (*bs)[start]&0x80>>7 == 1 {
+	if (*bs)[offset]&0x80>>7 == 1 {
 		signed = true
 	}
 	//convert hex byte slice to int32
-	for i := start + 3; i >= start; i-- {
+	for i := offset + 3; i >= offset; i-- {
 		cb := (*bs)[i]
 		//if signed do a XOR operation on every single Byte
 		if signed {
@@ -134,17 +134,17 @@ func ParseBs2Int32TwoComplement(bs *[]byte, start int32) int32 {
 	return sum
 }
 
-//ParseBs2Int64TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int64 coded with Two Complement Arithmetic
-func ParseBs2Int64TwoComplement(bs *[]byte, start int32) int64 {
+//ParseBs2Int64TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, offset and returns parsed signed Int64 coded with Two Complement Arithmetic
+func ParseBs2Int64TwoComplement(bs *[]byte, offset int32) int64 {
 	var sum int64
 	var order uint32
 	var signed bool
 	//mask last Byte with mask (1000 0000) then shift by 7 bits and check sign bit
-	if (*bs)[start]&0x80>>7 == 1 {
+	if (*bs)[offset]&0x80>>7 == 1 {
 		signed = true
 	}
 	//convert hex byte slice to int32
-	for i := start + 7; i >= start; i-- {
+	for i := offset + 7; i >= offset; i-- {
 		cb := (*bs)[i]
 		//if signed do a XOR operation on every single Byte
 		if signed {
