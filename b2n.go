@@ -170,7 +170,7 @@ func ParseIMEI(bs *[]byte, offset int32, length int32) (string, error) {
 	//range over slice
 	x := string((*bs)[offset : offset+length])
 
-	if len(x) == 16 {
+	if len(x) == 15 {
 		if ValidateIMEI(&x) != true {
 			return "", fmt.Errorf("IMEI %v is invalid", x)
 		}

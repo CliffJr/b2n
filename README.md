@@ -147,9 +147,9 @@ string 352094081672179
 
 ### ParseIMEI
 
-ParseIMEI takes a pointer to a byte slice including IMEI number encoded as ASCII, IMEI length, offset and returns IMEI as string and error. If len is 15 chars, also do imei validation
+ParseIMEI takes a pointer to a byte slice including IMEI number encoded as ASCII, IMEI length, offset and returns IMEI as string and error. If len is 15 digits, also do imei validation
 
-Performance per core 20.5 ns/op, 16 B/op, 1 allocs/op
+Performance per core 235 ns/op, 16 B/op, 1 allocs/op
 
 [DOCUMENTATION](https://godoc.org/github.com/filipkroca/b2n#ParseIMEI)
 [EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ParseIMEI)
