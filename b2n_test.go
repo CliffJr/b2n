@@ -166,17 +166,43 @@ func ExampleParseBs2Int64TwoComplement() {
 }
 
 func ExampleValidateIMEI() {
-	var imei string = "352094081673508"
+	imei := "352094081673508"
 	fmt.Println(ValidateIMEI(&imei))
 	// Output:
 	// true
 }
 
+func ExampleParseIMEI() {
+	//Example packet Teltonika UDP Codec 8 007CCAFE0133000F33353230393430383136373231373908020000016C32B488A0000A7A367C1D30018700000000000000F1070301001500EF000342318BCD42DCCE606401F1000059D9000000016C32B48C88000A7A367C1D3001870000000000000015070301001501EF0003423195CD42DCCE606401F1000059D90002, IMEI is located starting byte 8
+
+	var bs = []byte{0x00, 0x7C, 0xCA, 0xFE, 0x01, 0x33, 0x00, 0x0F, 0x33, 0x35, 0x32, 0x30, 0x39, 0x34, 0x30, 0x38, 0x31, 0x36, 0x37, 0x32, 0x31, 0x37, 0x39, 0x08}
+
+	imei, err := ParseIMEI(&bs, 8, 15)
+	if err != nil {
+		fmt.Println("ExampleParseIMEI error", err)
+	}
+	fmt.Printf("%T %v", imei, imei)
+
+	// Output:
+	// string 352094081672179
+}
+
 func BenchmarkValidateIMEI(b *testing.B) {
-	var imei string = "352094081673508"
+	imei := "352094081673508"
 	for i := 0; i < b.N; i++ {
 		ValidateIMEI(&imei)
 	}
+}
+
+func BenchmarkParseIMEI(b *testing.B) {
+	//Example packet 007CCAFE0133000F33353230393430383136373231373908020000016C32B488A0000A7A367C1D30018700000000000000F1070301001500EF000342318BCD42DCCE606401F1000059D9000000016C32B48C88000A7A367C1D3001870000000000000015070301001501EF0003423195CD42DCCE606401F1000059D90002
+
+	var bs = []byte{0x00, 0x7C, 0xCA, 0xFE, 0x01, 0x33, 0x00, 0x0F, 0x33, 0x35, 0x32, 0x30, 0x39, 0x34, 0x30, 0x38, 0x31, 0x36, 0x37, 0x32, 0x31, 0x37, 0x39, 0x08}
+
+	for i := 0; i < b.N; i++ {
+		ParseIMEI(&bs, 8, 15)
+	}
+
 }
 
 func BenchmarkParseBs2Uint8(b *testing.B) {

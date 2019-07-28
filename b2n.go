@@ -7,6 +7,7 @@
 package b2n
 
 import (
+	"fmt"
 	"log"
 	"strconv"
 )
@@ -43,7 +44,7 @@ func ParseBs2Uint32(bs *[]byte, offset int32) uint32 {
 	return sum
 }
 
-//ParseBs2Uint64 a pointer to a byte slice, offset, stop byte and returns parsed int64
+//ParseBs2Uint64 a pointer to a byte slice, offset and returns parsed int64
 func ParseBs2Uint64(bs *[]byte, offset int32) uint64 {
 	var sum uint64
 	var order uint32
@@ -161,6 +162,21 @@ func ParseBs2Int64TwoComplement(bs *[]byte, offset int32) int64 {
 		sum = sum * -1
 	}
 	return sum
+}
+
+//ParseIMEI takes a pointer to a byte slice including IMEI number encoded as ASCII, IMEI length, offset and returns IMEI as string and error. If len is 15 chars, also do imei validation
+func ParseIMEI(bs *[]byte, offset int32, length int32) (string, error) {
+
+	//range over slice
+	x := string((*bs)[offset : offset+length])
+
+	if len(x) == 16 {
+		if ValidateIMEI(&x) != true {
+			return "", fmt.Errorf("IMEI %v is invalid", x)
+		}
+	}
+
+	return x, nil
 }
 
 //ValidateIMEI takes pointer to 15 digits long IMEI string, calculate checksum using the Luhn algorithm and return validity as bool

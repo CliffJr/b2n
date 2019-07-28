@@ -106,7 +106,54 @@ Performance per core:   11.1 ns/op, 0 B/op, 0 allocs/op
 [DOCUMENTATION](https://godoc.org/github.com/filipkroca/b2n#ParseBs2Int64TwoComplement)
 [EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ParseBs2Int64TwoComplement)  
 
-## IMEI validator
+## IMEI number functions
+
+This functions provide support for parsing and validating [International Mobile Equipment Identity](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity)
+
+For example, have binary packet bs which is Teltonika UDP Codec 8 packet
+
+```go
+package main
+
+import (
+    "encoding/hex"
+    "fmt"
+
+    "github.com/filipkroca/b2n"
+)
+
+func main() {
+    //Example packet Teltonika UDP Codec 8 007CCAFE0133000F33353230393430383136373231373908020000016C32B488A0000A7A367C1D30018700000000000000F1070301001500EF000342318BCD42DCCE606401F1000059D9000000016C32B48C88000A7A367C1D3001870000000000000015070301001501EF0003423195CD42DCCE606401F1000059D90002, IMEI is located starting byte 8
+
+    var bs = []byte{0x00, 0x7C, 0xCA, 0xFE, 0x01, 0x33, 0x00, 0x0F, 0x33, 0x35, 0x32, 0x30, 0x39, 0x34, 0x30, 0x38, 0x31, 0x36, 0x37, 0x32, 0x31, 0x37, 0x39, 0x08}
+
+    imei, err := ParseIMEI(&bs, 8, 15)
+    if err != nil {
+    fmt.Println("ExampleParseIMEI error", err)
+    }
+    fmt.Printf("%T %v", imei, imei)
+
+}
+```
+
+According to the Teltonika Codec 8 documentation, on byte position 8 should be 15 digits long IMEI number. After parsing and validating
+
+Output should be
+
+```text
+string 352094081672179
+```
+
+### ParseIMEI
+
+ParseIMEI takes a pointer to a byte slice including IMEI number encoded as ASCII, IMEI length, offset and returns IMEI as string and error. If len is 15 chars, also do imei validation
+
+Performance per core 20.5 ns/op, 16 B/op, 1 allocs/op
+
+[DOCUMENTATION](https://godoc.org/github.com/filipkroca/b2n#ParseIMEI)
+[EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ParseIMEI)
+
+### ValidateIMEI
 
 ValidateIMEI takes pointer to 15 digits long IMEI string, calculate checksum using the Luhn algorithm and return validity as bool
 
