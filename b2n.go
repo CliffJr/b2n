@@ -223,6 +223,11 @@ func ValidateIMEI(imei *string) bool {
 		checkSum += uint64(val)
 	}
 
-	//return divider to 10 is same as checkSumDigit
+	//when checkSum is 0, should use 0
+	if checkSumDigit == 0 {
+		return 0 == uint64(checkSumDigit)
+	}
+
+	//return true if divider to 10 is same as the checkSumDigit
 	return ((10 - checkSum%10) == uint64(checkSumDigit))
 }

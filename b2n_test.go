@@ -166,7 +166,7 @@ func ExampleParseBs2Int64TwoComplement() {
 }
 
 func ExampleValidateIMEI() {
-	imei := "352094081673508"
+	imei := "352094081852920"
 	fmt.Println(ValidateIMEI(&imei))
 	// Output:
 	// true
@@ -188,7 +188,7 @@ func ExampleParseIMEI() {
 }
 
 func BenchmarkValidateIMEI(b *testing.B) {
-	imei := "352094081673508"
+	imei := "352094081852920"
 	for i := 0; i < b.N; i++ {
 		ValidateIMEI(&imei)
 	}
