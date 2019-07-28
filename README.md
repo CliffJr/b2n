@@ -1,4 +1,6 @@
-# Package b2n providing functions for parsing byte arrays and converting them to  
+# Package b2n providing functions for parsing byte arrays and converting them to
+
+You can find full documentation [HERE](https://godoc.org/github.com/filipkroca/b2n#example-ValidateIMEI)
 
 ## ParseHex2U
 
@@ -20,7 +22,7 @@
 
 ## IMEI validator
 
-This function validate 15 digits long IMEI using Luth algoritm
+This function validate 15 digits long IMEI using Luth algoritm [EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ValidateIMEI)
 
 ### Performance per core
 
