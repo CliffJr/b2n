@@ -1,15 +1,38 @@
-# Package b2n provides functions for parsing byte arrays and converting them to
+# Package b2n provides functions for parsing byte arrays and conversion into another data types
 
 Certain purpose:
 
 Package b2n was created for parsing data from [Teltonika](https://wiki.teltonika.lt/view/Codec#Codec_8_Extended) UDP packets, package can be used for parsing values from data streams.
 
-For example have binary packet bs
+For example, have binary packet bs which is Teltonika UDP Codec 8 Extended packet
 
 ```go
-var dataString = "0x00A1CAFE001B000F3335363330373034323434313031338E010000013FEBDD19C8000F0E9FF0209A718000690000120000001E09010002000300040016014703F0001504C8000C0900910A00440B004D130044431555440000B5000BB60005422E9B180000CD0386CE000107C700000000F10000601A460000013C4800000BB84900000BB84A00000BB84C00000000024E0000000000000000CF000000000000000001"
+package main
 
-bs, _ := hex.DecodeString(testDataString)
+import (
+    "encoding/hex"
+    "fmt"
+
+    "github.com/filipkroca/b2n"
+)
+
+func main() {
+    var dataString = "00A1CAFE001B000F3335363330373034323434313031338E010000013FEBDD19C8000F0E9FF0209A718000690000120000001E09010002000300040016014703F0001504C8000C0900910A00440B004D130044431555440000B5000BB60005422E9B180000CD0386CE000107C700000000F10000601A460000013C4800000BB84900000BB84A00000BB84C00000000024E0000000000000000CF000000000000000001"
+
+    bs, _ := hex.DecodeString(dataString)
+
+    noOfData := b2n.ParseBs2Uint8(&bs, 24)
+
+    fmt.Println("%T %v", noOfData)
+}
+```
+
+According to the Teltonika Codec 8 documentation, on byte position 24 should be number of data which should be unsigned uint8, use ParseBs2Uint8 function to parse and convert the value.
+
+Output should be
+
+```go
+uint8 1
 ```
 
 Full documentation [HERE](https://godoc.org/github.com/filipkroca/b2n#example-ValidateIMEI)
