@@ -1,4 +1,4 @@
-# Package b2n providing functions for parsing byte arrays and converting them to
+# Package b2n provides functions for parsing byte arrays and converting them to
 
 You can find full documentation [HERE](https://godoc.org/github.com/filipkroca/b2n#example-ValidateIMEI)
 
