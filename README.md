@@ -1,4 +1,4 @@
-# Package b2n provides functions for parsing byte arrays and conversion into another data types
+# Package b2n provides functions for parsing and conversion values from byte arrays and slice
 
 Certain purpose:
 
@@ -95,7 +95,7 @@ ParseBs2Int32TwoComplement takes a pointer to a byte slice coded with Two Comple
 Performance per core:   7.48 ns/op, 0 B/op, 0 allocs/op
 
 [DOCUMENTATION](https://godoc.org/github.com/filipkroca/b2n#ParseBs2Int32TwoComplement)
-[EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ParseBs2Int32TwoComplement) 
+[EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ParseBs2Int32TwoComplement)  
 
 ### ParseBs2Int64TwoComplement  
 
@@ -104,7 +104,7 @@ ParseBs2Int64TwoComplement takes a pointer to a byte slice coded with Two Comple
 Performance per core:   11.1 ns/op, 0 B/op, 0 allocs/op
 
 [DOCUMENTATION](https://godoc.org/github.com/filipkroca/b2n#ParseBs2Int64TwoComplement)
-[EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ParseBs2Int64TwoComplement) 
+[EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ParseBs2Int64TwoComplement)  
 
 ## IMEI validator
 
