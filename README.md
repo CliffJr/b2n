@@ -31,7 +31,7 @@ According to the Teltonika Codec 8 documentation, on byte position 24 should be 
 
 Output should be
 
-```go
+```text
 uint8 1
 ```
 
