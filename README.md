@@ -22,7 +22,7 @@ You can find full documentation [HERE](https://godoc.org/github.com/filipkroca/b
 
 ## IMEI validator
 
-This function validate 15 digits long IMEI using Luth algoritm [EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ValidateIMEI)
+ValidateIMEI takes pointer to 15 digits long IMEI string, calculate checksum using the Luhn algorithm and return validity as bool [EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ValidateIMEI)
 
 ### Performance per core
 
