@@ -45,6 +45,18 @@ func ExampleParseBs2Uint32() {
 	// uint32 2882382847
 }
 
+func ExampleParseBs2Uint64() {
+	//sample data
+	bs := []byte{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}
+
+	//run test
+	decoded := ParseBs2Uint64(&bs, 0)
+
+	fmt.Printf("%T %v", decoded, decoded)
+	// Output:
+	// uint64 18446744073709551615
+}
+
 func ExampleParseBs2Int8TwoComplement() {
 	//sample data
 	bs := []byte{0xFF, 0x80, 0x51, 0x00}
@@ -171,5 +183,47 @@ func BenchmarkParseBs2Uint8(b *testing.B) {
 	bs := []byte{0xAB, 0xFF, 0x12}
 	for i := 0; i < b.N; i++ {
 		ParseBs2Uint8(&bs, 1)
+	}
+}
+
+func BenchmarkParseBs2Uint16(b *testing.B) {
+	bs := []byte{0xAB, 0xCD, 0xAB, 0xFF}
+	for i := 0; i < b.N; i++ {
+		ParseBs2Uint16(&bs, 0)
+	}
+}
+
+func BenchmarkParseBs2Uint32(b *testing.B) {
+	bs := []byte{0xAB, 0xCD, 0xAB, 0xFF}
+	for i := 0; i < b.N; i++ {
+		ParseBs2Uint32(&bs, 0)
+	}
+}
+
+func BenchmarkParseBs2Int8TwoComplement(b *testing.B) {
+	bs := []byte{0xFF, 0x80, 0x51, 0x00}
+	for i := 0; i < b.N; i++ {
+		ParseBs2Int8TwoComplement(&bs, 0)
+	}
+}
+
+func BenchmarkParseBs2Int16TwoComplement(b *testing.B) {
+	bs := []byte{0xFF, 0x80, 0x51, 0x00}
+	for i := 0; i < b.N; i++ {
+		ParseBs2Int16TwoComplement(&bs, 0)
+	}
+}
+
+func BenchmarkParseBs2Int32TwoComplement(b *testing.B) {
+	bs := []byte{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7F, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
+	for i := 0; i < b.N; i++ {
+		ParseBs2Int32TwoComplement(&bs, 0)
+	}
+}
+
+func BenchmarkParseBs2Int64TwoComplement(b *testing.B) {
+	bs := []byte{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7F, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
+	for i := 0; i < b.N; i++ {
+		ParseBs2Int64TwoComplement(&bs, 0)
 	}
 }
