@@ -13,13 +13,13 @@ import (
 )
 
 //ParseBs2Uint8 a pointer to a byte slice, offset and returns parsed Uint8
-func ParseBs2Uint8(bs *[]byte, offset int32) uint8 {
+func ParseBs2Uint8(bs *[]byte, offset int) uint8 {
 	//convert hex byte to Uint8
 	return uint8((*bs)[offset])
 }
 
 //ParseBs2Uint16 a pointer to a byte slice, offset and returns parsed int16
-func ParseBs2Uint16(bs *[]byte, offset int32) uint16 {
+func ParseBs2Uint16(bs *[]byte, offset int) uint16 {
 	var sum uint16
 	var order uint32
 	//convert hex byte slice to Uint64
@@ -32,7 +32,7 @@ func ParseBs2Uint16(bs *[]byte, offset int32) uint16 {
 }
 
 //ParseBs2Uint32 a pointer to a byte slice, offset and returns parsed int32
-func ParseBs2Uint32(bs *[]byte, offset int32) uint32 {
+func ParseBs2Uint32(bs *[]byte, offset int) uint32 {
 	var sum uint32
 	var order uint32
 	//convert hex byte slice to Uint64
@@ -45,7 +45,7 @@ func ParseBs2Uint32(bs *[]byte, offset int32) uint32 {
 }
 
 //ParseBs2Uint64 a pointer to a byte slice, offset and returns parsed int64
-func ParseBs2Uint64(bs *[]byte, offset int32) uint64 {
+func ParseBs2Uint64(bs *[]byte, offset int) uint64 {
 	var sum uint64
 	var order uint32
 	//convert hex byte slice to Uint64
@@ -58,7 +58,7 @@ func ParseBs2Uint64(bs *[]byte, offset int32) uint64 {
 }
 
 //ParseBs2Int8TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, offset and returns parsed signed Int8
-func ParseBs2Int8TwoComplement(bs *[]byte, offset int32) int8 {
+func ParseBs2Int8TwoComplement(bs *[]byte, offset int) int8 {
 	var sum int8
 	var signed bool
 	//mask last Byte with mask (1000 0000) then shift by 7 bits and check sign bit
@@ -81,7 +81,7 @@ func ParseBs2Int8TwoComplement(bs *[]byte, offset int32) int8 {
 }
 
 //ParseBs2Int16TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, offset and returns parsed signed Int16 coded with Two Complement Arithmetic
-func ParseBs2Int16TwoComplement(bs *[]byte, offset int32) int16 {
+func ParseBs2Int16TwoComplement(bs *[]byte, offset int) int16 {
 	var sum int16
 	var order uint16
 	var signed bool
@@ -109,7 +109,7 @@ func ParseBs2Int16TwoComplement(bs *[]byte, offset int32) int16 {
 }
 
 //ParseBs2Int32TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, offset and returns parsed signed Int32 coded with Two Complement Arithmetic
-func ParseBs2Int32TwoComplement(bs *[]byte, offset int32) int32 {
+func ParseBs2Int32TwoComplement(bs *[]byte, offset int) int32 {
 	var sum int32
 	var order uint32
 	var signed bool
@@ -137,7 +137,7 @@ func ParseBs2Int32TwoComplement(bs *[]byte, offset int32) int32 {
 }
 
 //ParseBs2Int64TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, offset and returns parsed signed Int64 coded with Two Complement Arithmetic
-func ParseBs2Int64TwoComplement(bs *[]byte, offset int32) int64 {
+func ParseBs2Int64TwoComplement(bs *[]byte, offset int) int64 {
 	var sum int64
 	var order uint32
 	var signed bool
@@ -165,7 +165,7 @@ func ParseBs2Int64TwoComplement(bs *[]byte, offset int32) int64 {
 }
 
 //ParseIMEI takes a pointer to a byte slice including IMEI number encoded as ASCII, IMEI length, offset and returns IMEI as string and error. If len is 15 chars, also do imei validation
-func ParseIMEI(bs *[]byte, offset int32, length int32) (string, error) {
+func ParseIMEI(bs *[]byte, offset int, length int) (string, error) {
 
 	//range over slice
 	x := string((*bs)[offset : offset+length])
