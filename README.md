@@ -4,7 +4,7 @@ Certain purpose:
 
 Package b2n was created for parsing data from [Teltonika](https://wiki.teltonika.lt/view/Codec#Codec_8_Extended) UDP packets, package can be used for parsing values from data streams.
 
-For example, have binary packet bs which is Teltonika UDP Codec 8 Extended packet
+For example, have binary packet bs which is Teltonika UDP Codec 8 Extended packet according to the Teltonika Codec 8 documentation, on byte position 24 should be number of data which should be unsigned uint8, use ParseBs2Uint8 function to parse and convert the value.
 
 ```go
 package main
@@ -17,10 +17,13 @@ import (
 )
 
 func main() {
+    // create HEX string raw
     var dataString = "00A1CAFE001B000F3335363330373034323434313031338E010000013FEBDD19C8000F0E9FF0209A718000690000120000001E09010002000300040016014703F0001504C8000C0900910A00440B004D130044431555440000B5000BB60005422E9B180000CD0386CE000107C700000000F10000601A460000013C4800000BB84900000BB84A00000BB84C00000000024E0000000000000000CF000000000000000001"
 
+    // decode sting into a byte slice
     bs, _ := hex.DecodeString(dataString)
 
+    // parse a value on Byte offset 24, is should be number of data according to the Teltonika documentation
     noOfData, err := b2n.ParseBs2Uint8(&bs, 24)
     if err != nil {
         fmt.Printf(err)
@@ -30,8 +33,6 @@ func main() {
     fmt.Println("%T %v", noOfData)
 }
 ```
-
-According to the Teltonika Codec 8 documentation, on byte position 24 should be number of data which should be unsigned uint8, use ParseBs2Uint8 function to parse and convert the value.
 
 Output should be
 
@@ -129,6 +130,7 @@ import (
 func main() {
     //Example packet Teltonika UDP Codec 8 007CCAFE0133000F33353230393430383136373231373908020000016C32B488A0000A7A367C1D30018700000000000000F1070301001500EF000342318BCD42DCCE606401F1000059D9000000016C32B48C88000A7A367C1D3001870000000000000015070301001501EF0003423195CD42DCCE606401F1000059D90002, IMEI is located starting byte 8
 
+    // create a raw byte slice
     var bs = []byte{0x00, 0x7C, 0xCA, 0xFE, 0x01, 0x33, 0x00, 0x0F, 0x33, 0x35, 0x32, 0x30, 0x39, 0x34, 0x30, 0x38, 0x31, 0x36, 0x37, 0x32, 0x31, 0x37, 0x39, 0x08}
 
     //parse and validate imei
