@@ -21,7 +21,11 @@ func main() {
 
     bs, _ := hex.DecodeString(dataString)
 
-    noOfData := b2n.ParseBs2Uint8(&bs, 24)
+    noOfData, err := b2n.ParseBs2Uint8(&bs, 24)
+    if err != nil {
+        fmt.Printf(err)
+        return
+    }
 
     fmt.Println("%T %v", noOfData)
 }
@@ -41,7 +45,7 @@ Full documentation [HERE](https://godoc.org/github.com/filipkroca/b2n#example-Va
 
 ### ParseBs2Uint8  
 
-ParseBs2Uint8 takes a pointer to a byte slice, start byte and returns parsed Uint8
+ParseBs2Uint8 takes a pointer to a byte slice, start byte and returns parsed Uint8 and error
 
 Performance per core:   0.46 ns/op, 0 B/op, 0 allocs/op
 
@@ -50,7 +54,7 @@ Performance per core:   0.46 ns/op, 0 B/op, 0 allocs/op
 
 ### ParseBs2Uint16  
 
-ParseBs2Uint16 takes a pointer to a byte slice, start byte and returns parsed Uint16
+ParseBs2Uint16 takes a pointer to a byte slice, start byte and returns parsed Uint16 and error
 
 Performance per core:   3.35 ns/op, 0 B/op, 0 allocs/op
 
@@ -59,7 +63,7 @@ Performance per core:   3.35 ns/op, 0 B/op, 0 allocs/op
 
 ### ParseBs2Uint32  
 
-ParseBs2Uint32 takes a pointer to a byte slice, start byte and returns parsed Uint32
+ParseBs2Uint32 takes a pointer to a byte slice, start byte and returns parsed Uint32 and error
 
 Performance per core:   4.97 ns/op, 0 B/op, 0 allocs/op
 
@@ -72,7 +76,7 @@ Read more here [Two's complement](https://en.wikipedia.org/wiki/Two%27s_compleme
 
 ### ParseBs2Int8TwoComplement  
 
-ParseBs2Int8TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int8
+ParseBs2Int8TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int8 and error
 
 Performance per core:   0.24 ns/op, 0 B/op, 0 allocs/op
 
@@ -81,7 +85,7 @@ Performance per core:   0.24 ns/op, 0 B/op, 0 allocs/op
 
 ### ParseBs2Int16TwoComplement  
 
-ParseBs2Int16TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int16
+ParseBs2Int16TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int16 and error
 
 Performance per core:   4.52 ns/op, 0 B/op, 0 allocs/op
 
@@ -90,7 +94,7 @@ Performance per core:   4.52 ns/op, 0 B/op, 0 allocs/op
 
 ### ParseBs2Int32TwoComplement  
 
-ParseBs2Int32TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int32
+ParseBs2Int32TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int32 and error
 
 Performance per core:   7.48 ns/op, 0 B/op, 0 allocs/op
 
@@ -99,7 +103,7 @@ Performance per core:   7.48 ns/op, 0 B/op, 0 allocs/op
 
 ### ParseBs2Int64TwoComplement  
 
-ParseBs2Int64TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int64
+ParseBs2Int64TwoComplement takes a pointer to a byte slice coded with Two Complement Arithmetic, start byte and returns parsed signed Int64 and error
 
 Performance per core:   11.1 ns/op, 0 B/op, 0 allocs/op
 

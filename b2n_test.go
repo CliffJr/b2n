@@ -14,7 +14,11 @@ func ExampleParseBs2Uint8() {
 	bs := []byte{0xAB, 0xFF, 0x12}
 
 	// run test
-	decoded := ParseBs2Uint8(&bs, 1)
+	decoded, err := ParseBs2Uint8(&bs, 1)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	fmt.Printf("%T %v", decoded, decoded)
 	// Output:
@@ -26,7 +30,11 @@ func ExampleParseBs2Uint16() {
 	bs := []byte{0xAB, 0xCD, 0xAB, 0xFF}
 
 	// run test
-	decoded := ParseBs2Uint16(&bs, 0)
+	decoded, err := ParseBs2Uint16(&bs, 0)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	fmt.Printf("%T %v", decoded, decoded)
 	// Output:
@@ -38,7 +46,11 @@ func ExampleParseBs2Uint32() {
 	bs := []byte{0xAB, 0xCD, 0xAB, 0xFF}
 
 	// run test
-	decoded := ParseBs2Uint32(&bs, 0)
+	decoded, err := ParseBs2Uint32(&bs, 0)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	fmt.Printf("%T %v", decoded, decoded)
 	// Output:
@@ -50,7 +62,11 @@ func ExampleParseBs2Uint64() {
 	bs := []byte{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}
 
 	// run test
-	decoded := ParseBs2Uint64(&bs, 0)
+	decoded, err := ParseBs2Uint64(&bs, 0)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	fmt.Printf("%T %v", decoded, decoded)
 	// Output:
@@ -62,19 +78,39 @@ func ExampleParseBs2Int8TwoComplement() {
 	bs := []byte{0xFF, 0x80, 0x51, 0x00}
 
 	// run test
-	decoded := ParseBs2Int8TwoComplement(&bs, 0)
+	decoded, err := ParseBs2Int8TwoComplement(&bs, 0)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int8TwoComplement(&bs, 1)
+	decoded, err = ParseBs2Int8TwoComplement(&bs, 1)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int8TwoComplement(&bs, 2)
+	decoded, err = ParseBs2Int8TwoComplement(&bs, 2)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int8TwoComplement(&bs, 3)
+	decoded, err = ParseBs2Int8TwoComplement(&bs, 3)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// Output:
@@ -89,19 +125,39 @@ func ExampleParseBs2Int16TwoComplement() {
 	bs := []byte{0xFF, 0xFF, 0x80, 0x00, 0x7F, 0xFF, 0x00, 0x00}
 
 	// run test
-	decoded := ParseBs2Int16TwoComplement(&bs, 0)
+	decoded, err := ParseBs2Int16TwoComplement(&bs, 0)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int16TwoComplement(&bs, 2)
+	decoded, err = ParseBs2Int16TwoComplement(&bs, 2)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int16TwoComplement(&bs, 4)
+	decoded, err = ParseBs2Int16TwoComplement(&bs, 4)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int16TwoComplement(&bs, 6)
+	decoded, err = ParseBs2Int16TwoComplement(&bs, 6)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// Output:
@@ -116,19 +172,39 @@ func ExampleParseBs2Int32TwoComplement() {
 	bs := []byte{0xFF, 0xFF, 0xFF, 0xFF, 0x80, 0x00, 0x00, 0x00, 0x7F, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00}
 
 	// run test
-	decoded := ParseBs2Int32TwoComplement(&bs, 0)
+	decoded, err := ParseBs2Int32TwoComplement(&bs, 0)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int32TwoComplement(&bs, 4)
+	decoded, err = ParseBs2Int32TwoComplement(&bs, 4)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int32TwoComplement(&bs, 8)
+	decoded, err = ParseBs2Int32TwoComplement(&bs, 8)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int32TwoComplement(&bs, 12)
+	decoded, err = ParseBs2Int32TwoComplement(&bs, 12)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// Output:
@@ -143,19 +219,39 @@ func ExampleParseBs2Int64TwoComplement() {
 	bs := []byte{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7F, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
 
 	// run test
-	decoded := ParseBs2Int64TwoComplement(&bs, 0)
+	decoded, err := ParseBs2Int64TwoComplement(&bs, 0)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int64TwoComplement(&bs, 8)
+	decoded, err = ParseBs2Int64TwoComplement(&bs, 8)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int64TwoComplement(&bs, 16)
+	decoded, err = ParseBs2Int64TwoComplement(&bs, 16)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
-	decoded = ParseBs2Int64TwoComplement(&bs, 24)
+	decoded, err = ParseBs2Int64TwoComplement(&bs, 24)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// Output:
