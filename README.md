@@ -1,4 +1,4 @@
-# Package b2n provides functions for parsing and conversion values from byte arrays and slice
+# Package b2n provides functions for parsing and conversion values from byte arrays and slices
 
 Certain purpose:
 

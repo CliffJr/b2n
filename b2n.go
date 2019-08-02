@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package b2n provides functions for parsing and conversion values from byte arrays and slice <br />
+// Package b2n provides functions for parsing and conversion values from byte arrays and slices
 // home page https:// github.com/filipkroca/b2n
 package b2n
 
