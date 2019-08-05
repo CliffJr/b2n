@@ -80,7 +80,7 @@ func ParseBs2Int8TwoComplement(bs *[]byte, offset int) (int8, error) {
 	}
 	var sum int8
 	var signed bool
-	// mask last Byte with mask (1000 0000) then shift by 7 bits and check sign bit
+	// mask last Bit with mask (1000 0000) then shift by 7 bits and check sign bit
 	if (*bs)[offset]&0x80>>7 == 1 {
 		signed = true
 	}
@@ -109,7 +109,7 @@ func ParseBs2Int16TwoComplement(bs *[]byte, offset int) (int16, error) {
 	var order uint16
 	var signed bool
 
-	// mask last Byte with mask (1000 0000) then shift by 7 bits and check sign bit
+	// mask last Bit with mask (1000 0000) then shift by 7 bits and check sign bit
 	if (*bs)[offset]&0x80>>7 == 1 {
 		signed = true
 	}
@@ -142,7 +142,7 @@ func ParseBs2Int32TwoComplement(bs *[]byte, offset int) (int32, error) {
 	var order uint32
 	var signed bool
 
-	// mask last Byte with mask (1000 0000) then shift by 7 bits and check sign bit
+	// mask last Bit with mask (1000 0000) then shift by 7 bits and check sign bit
 	if (*bs)[offset]&0x80>>7 == 1 {
 		signed = true
 	}
@@ -175,7 +175,7 @@ func ParseBs2Int64TwoComplement(bs *[]byte, offset int) (int64, error) {
 	var order uint32
 	var signed bool
 
-	// mask last Byte with mask (1000 0000) then shift by 7 bits and check sign bit
+	// mask last Bit with mask (1000 0000) then shift by 7 bits and check sign bit
 	if (*bs)[offset]&0x80>>7 == 1 {
 		signed = true
 	}
