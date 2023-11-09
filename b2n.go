@@ -268,3 +268,15 @@ func ValidateIMEI(imei *string) bool {
 	// return true if divider to 10 is same as the checkSumDigit
 	return ((10 - checkSum%10) == uint64(checkSumDigit))
 }
+
+// ParseBs2String takes a pointer to a byte slice encoded as ASCII, Input length, offset and returns string and error.
+func ParseBs2String(bs *[]byte, offset int, length int) (string, error) {
+	// error handling
+	if len(*bs) < offset {
+		return "", fmt.Errorf("Invalid length of slice %#x , slice len %v , want %v", (*bs), len(*bs), offset+8)
+	}
+	// range over slice
+	x := string((*bs)[offset : offset+length])
+
+	return x, nil
+}

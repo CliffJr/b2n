@@ -130,7 +130,7 @@ func ExampleParseBs2Int16TwoComplement() {
 		fmt.Println(err)
 		return
 	}
-	
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
@@ -177,7 +177,7 @@ func ExampleParseBs2Int32TwoComplement() {
 		fmt.Println(err)
 		return
 	}
-	
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
@@ -224,7 +224,7 @@ func ExampleParseBs2Int64TwoComplement() {
 		fmt.Println(err)
 		return
 	}
-	
+
 	fmt.Printf("%T %v\n", decoded, decoded)
 
 	// run test
@@ -278,6 +278,22 @@ func ExampleParseIMEI() {
 		fmt.Println("ExampleParseIMEI error", err)
 	}
 	fmt.Printf("%T %v", imei, imei)
+
+	// Output:
+	// string 352094081672179
+}
+
+func ExampleParseBs2String() {
+	// Example packet Join Tech TCP 2480006200111911003418042116225922348310113550543F12980000002D060000000020E028109228661F00010000868822040248195F000001CC0156
+
+	hexData := "2480006200111911003418042116225922348310113550543F12980000002D060000000020E028109228661F00010000868822040248195F000001CC0156"
+	var bs = []byte(hexData)
+
+	result, err := ParseBs2String(&bs, 1, 6)
+	if err != nil {
+		fmt.Println("ExampleParseIMEI error", err)
+	}
+	fmt.Printf("%T %v", result, result)
 
 	// Output:
 	// string 352094081672179
