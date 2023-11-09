@@ -168,3 +168,7 @@ Performance per core 193 ns/op, 0 B/op, 0 allocs/op
 
 [DOCUMENTATION](https://godoc.org/github.com/filipkroca/b2n#ValidateIMEI)
 [EXAMPLE](https://godoc.org/github.com/filipkroca/b2n#example-ValidateIMEI)
+
+### ParseBs2String 
+
+ParseBs2String takes a pointer to any byte slice encoded as ASCII, length, offset and return a string and error.
