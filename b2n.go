@@ -276,7 +276,7 @@ func ParseBs2String(bs *[]byte, offset int, length int) (string, error) {
 		return "", fmt.Errorf("Invalid length of slice %#x , slice len %v , want %v", (*bs), len(*bs), offset)
 	}
 	// range over slice
-	x := (*bs)[offset:length]
+	x := (*bs)[offset : offset+length]
 
 	return fmt.Sprintf("%X", x), nil
 }
