@@ -273,10 +273,10 @@ func ValidateIMEI(imei *string) bool {
 func ParseBs2String(bs *[]byte, offset int, length int) (string, error) {
 	// error handling
 	if len(*bs) < offset {
-		return "", fmt.Errorf("Invalid length of slice %#x , slice len %v , want %v", (*bs), len(*bs), offset+8)
+		return "", fmt.Errorf("Invalid length of slice %#x , slice len %v , want %v", (*bs), len(*bs), offset)
 	}
 	// range over slice
-	x := string((*bs)[offset : offset+length])
+	x := (*bs)[offset:length]
 
-	return x, nil
+	return fmt.Sprintf("%X", x), nil
 }
