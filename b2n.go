@@ -201,8 +201,8 @@ func ParseBs2Int64TwoComplement(bs *[]byte, offset int) (int64, error) {
 // ParseIMEI takes a pointer to a byte slice including IMEI number encoded as ASCII, IMEI length, offset and returns IMEI as string and error. If len is 15 chars, also do imei validation
 func ParseIMEI(bs *[]byte, offset int, length int) (string, error) {
 	// error handling
-	if len(*bs) < offset+15 {
-		return "", fmt.Errorf("ParseIMEI invalid length of slice %#x , slice len %v , want %v", (*bs), len(*bs), offset+8)
+	if len(*bs) < offset+14 {
+		return "", fmt.Errorf("ParseIMEI invalid length of slice %#x , slice len %v , want %v", (*bs), len(*bs), offset+14)
 	}
 	// range over slice
 	x := string((*bs)[offset : offset+length])
