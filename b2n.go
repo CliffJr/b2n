@@ -269,7 +269,7 @@ func ValidateIMEI(imei *string) bool {
 	return ((10 - checkSum%10) == uint64(checkSumDigit))
 }
 
-// ParseBs2String takes a pointer to a byte slice encoded as ASCII, Input length, offset and returns IMEI as string and error. If len is 15 chars, also do imei validation
+// ParseBs2String takes a pointer to a byte slice encoded as ASCII, Input length, offset and returns result as string and error. If len is 15 chars, also do imei validation
 func ParseBs2String(bs *[]byte, offset int, length int) (string, error) {
 	// error handling
 	if len(*bs) < offset {
